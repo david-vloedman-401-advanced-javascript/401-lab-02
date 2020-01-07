@@ -1,0 +1,20 @@
+{
+  "name": "class-02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest --verbose --coverage",
+    "lint": "eslint '**/*.js'",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "start": "node index.js",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
