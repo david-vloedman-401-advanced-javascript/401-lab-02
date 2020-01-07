@@ -22,7 +22,7 @@ class Car extends Vehicle {
   }
 }
 
-class Motorcycle {
+class Motorcycle extends Vehicle {
   constructor(name) {
     super(name, 2);
   }
