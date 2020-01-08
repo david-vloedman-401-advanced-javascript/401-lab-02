@@ -54,24 +54,24 @@ validator.isObject = (input) => {
 };
 
 validator.isArray = (input, valueType) => {
-  return Array.isArray(input) && (valueType? input.every(val => typeof val === valueType): true)
+  return Array.isArray(input) && (valueType? input.every(val => typeof val === valueType): true);
 };
 
 validator.isBoolean = (input) => {
   return typeof input === 'boolean';
-} 
+}; 
 
 validator.isNumber = (input) => {
-  return typeof input ==='number'
-}
+  return typeof input ==='number';
+};
 
 validator.isFunction = (input) => {
   return typeof input === 'function';
-}
+};
 
 validator.isTruthy = (input) => {
   return !!input;
-}
+};
 
 validator.isCorrectType = (input, field)  => {
    
@@ -84,4 +84,4 @@ validator.isCorrectType = (input, field)  => {
   default: return false;
   }
 
-}
+};

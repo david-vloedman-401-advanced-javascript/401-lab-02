@@ -37,18 +37,18 @@ class Validator {
    */
   isCorrectType(input, field) {
     switch (field.type) {
-      case 'string':
-        return this.isString(input);
-      case 'number':
-        return this.isNumber(input);
-      case 'array':
-        return this.isArray(input, field.valueType);
-      case 'object':
-        return this.isObject(input);
-      case 'boolean':
-        return this.isBoolean(input);
-      default:
-        return false;
+    case 'string':
+      return this.isString(input);
+    case 'number':
+      return this.isNumber(input);
+    case 'array':
+      return this.isArray(input, field.valueType);
+    case 'object':
+      return this.isObject(input);
+    case 'boolean':
+      return this.isBoolean(input);
+    default:
+      return false;
     }
   }
   /**
