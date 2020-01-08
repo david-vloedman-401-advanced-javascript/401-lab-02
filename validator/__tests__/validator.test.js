@@ -2,42 +2,38 @@
 
 const validatorModule = require('../lib/validator.js');
 const faker = require('faker');
-const validatorClass = require('../lib/validatorClass.js')
-
+const validatorClass = require('../lib/validatorClass.js');
 
 let types = ['Module', 'Class'];
 
 function getValidator(type) {
   switch (type) {
-    case 'Module':
-      return validatorModule;
-    case 'Class':
-      return validatorClass;
-    default:
-      return {};
+  case 'Module':
+    return validatorModule;
+  case 'Class':
+    return validatorClass;
+  default:
+    return {};
   }
 }
 
-
-
 const schema = {
-
   fields: {
     id: {
       type: 'string',
-      required: true
+      required: true,
     },
     name: {
       type: 'string',
-      required: true
+      required: true,
     },
     age: {
       type: 'number',
-      required: true
+      required: true,
     },
     children: {
       type: 'array',
-      valueType: 'string'
+      valueType: 'string',
     },
   },
 };
@@ -46,7 +42,7 @@ let str = 'yes';
 let num = 1;
 let arr = ['a'];
 let obj = {
-  x: 'y'
+  x: 'y',
 };
 let func = () => {};
 let bool = false;
@@ -109,10 +105,7 @@ describe('validator module performs basic validation of', () => {
       expect(validator.isFunction(bool)).toBeFalsy();
     });
   });
-
 });
-
-
 
 describe('validates the basic schema', () => {
   types.forEach(type => {
@@ -123,22 +116,22 @@ describe('validates the basic schema', () => {
 
       for (let field in schema.fields) {
         switch (schema.fields[field].type) {
-          case 'boolean':
-            testRecord[field] = faker.random.boolean();
-            break;
-          case 'number':
-            testRecord[field] = faker.random.number();
-            break;
-          case 'string':
-            testRecord[field] = faker.random.word();
-            break;
-          case 'array':
-            testRecord[field] = [];
-            testRecord[field].push(faker.random.arrayElement());
-            testRecord[field].push(faker.random.arrayElement());
-            break;
-          default:
-            null;
+        case 'boolean':
+          testRecord[field] = faker.random.boolean();
+          break;
+        case 'number':
+          testRecord[field] = faker.random.number();
+          break;
+        case 'string':
+          testRecord[field] = faker.random.word();
+          break;
+        case 'array':
+          testRecord[field] = [];
+          testRecord[field].push(faker.random.arrayElement());
+          testRecord[field].push(faker.random.arrayElement());
+          break;
+        default:
+          null;
         }
       }
       expect(validator.isValid(schema, testRecord)).toBeTruthy();
@@ -155,7 +148,6 @@ describe('validates the basic schema', () => {
       expect(validator.isValid(schema, testRecord)).toBeFalsy();
     });
   });
-
 });
 
 const personRules = {
@@ -192,48 +184,40 @@ const fred = {
   children: [],
 };
 
-const ned = {
-
-};
+const ned = {};
 
 const arrayRules = {
   fields: {
     test: {
       type: 'array',
       valueType: 'number',
-    }
-  }
+    },
+  },
 };
 
 const richard = {
-  test: ['dick', 34]
-}
+  test: ['dick', 34],
+};
 
 describe('validator module performs complex validations', () => {
   types.forEach(type => {
     const validator = getValidator(type);
     it('Validates an object with a set of rules against an object', () => {
-
       expect(validator.isValid(personRules, susan)).toBeTruthy();
     });
 
-
     it('validates an object with a set of rules against an object that does not pass', () => {
-
       expect(validator.isValid(personRules, fred)).toBeFalsy();
     });
 
     it('does not validate rules against an empty object', () => {
-
       expect(validator.isValid(personRules, ned)).toBeFalsy();
     });
 
     it('validates a value array against an approved list', () => {
-
       expect(validator.isValid(arrayRules, richard)).toBeFalsy();
     });
   });
 
   // TODO: Cover so, so many more cases
-
 });
