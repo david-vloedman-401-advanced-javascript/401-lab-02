@@ -11,8 +11,7 @@
 
 #### Documentation
 
-[Classes](./classes/out/index.html)
-[Validator](./classes/out/index.html)
+[JSDoc Index](./docs/index.html)
 
 
 ### Setup
