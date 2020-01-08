@@ -34,5 +34,5 @@ class Motorcycle extends Vehicle {
 
 module.exports = {
   Car,
-  Motorcycle
-}
+  Motorcycle,
+};
